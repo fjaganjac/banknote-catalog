@@ -1,0 +1,84 @@
+{
+  "app": {
+    "title": "Klijentski portal",
+    "copyright_text": "Copyright © Vienna osiguranje d.d. VIG Sarajevo.\nSva prava pridržana.",
+    "error": "Greška",
+    "success": "Uspjeh",
+    "info": "Obavijest",
+    "warning": "Upozorenje"
+  },
+  "calendar": {
+    "months": {
+      "1": "Januar",
+      "2": "Februar",
+      "3": "Mart",
+      "4": "April",
+      "5": "Maj",
+      "6": "Juni",
+      "7": "Juli",
+      "8": "August",
+      "9": "Septembar",
+      "10": "Oktobar",
+      "11": "Novembar",
+      "12": "Decembar"
+    }
+  },
+  "constant": {
+    "yes": "DA",
+    "no": "NE",
+    "back": "Povratak na prethodnu stranicu"
+  },
+  "menu": {},
+  "pages": {},
+  "search": {
+    "no_data": "Nema podataka"
+  },
+  "date_picker": {
+    "placeholder": "Izaberite datum",
+    "start_date": "Početak",
+    "end_date": "Kraj",
+    "today": "Danas",
+    "now": "Sada",
+    "back_to_today": "Povratak na danas",
+    "ok": "Uredu",
+    "clear": "Izbriši",
+    "month": "Mjesec",
+    "year": "Godina",
+    "time_select": "Izaberite vrijeme",
+    "date_select": "Izaberite datum",
+    "month_select": "Izaberite mjesec",
+    "year_select": "Izaberite godinu",
+    "decade_select": "Izaberite deceniju",
+    "previous_month": "Prethodni mjesec (PageUp)",
+    "next_month": "Sljedeći mjesec (PageDown)",
+    "previous_year": "Prošla godina (Control + left)",
+    "next_year": "Sljedeća godina (Control + right)",
+    "previous_decade": "Prethodna decenija",
+    "next_decade": "Sljedeća decenija",
+    "previous_century": "Prošlo stoljeće",
+    "next_century": "Sljedeće stoljeće"
+  },
+  "modal_functions": {
+    "action_modal": {
+      "cancel": "Odustani",
+      "accept": "Uredu",
+      "close": "Zatvori",
+      "confirm": "Potvrdi"
+    }
+  },
+  "errors": {
+    "network": "Nije uspostavljena konekcija.\n\nProvjerite vašu internet konekciju i pokušajte ponovo.",
+    "internal_error": "Došlo je do interne greške na serveru, molimo pokušajte ponovno ili kontaktirajte podršku.",
+    "not_found": "Tražena stranica nije pronađena.",
+    "not_found_error_title": "Greška",
+    "error_recovery_action": "Nazad",
+    "forbidden_error_title": "Greška",
+    "forbidden": "Nemate pravo pristupa sadržaju.",
+    "error": "Ups, dogodila se greška.\nMolimo pokušajte ponovo ili kontaktirajte administratora.",
+    "error_title": "Greška",
+    "session_expired": "Vaša sesija je istekla.",
+    "invalid_token_error_title": "Greška",
+    "invalid_token": "Vaš link je neispravan. Molimo kontaktirajte podršku.",
+    "invalid_token_recovery_action": "Nazad"
+  }
+}
