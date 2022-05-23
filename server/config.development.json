@@ -12,7 +12,7 @@
     "port": 8000,
     "cookieSecret": "zz/VL7wAFVlKy6dg/0ba/sqbyyXW462X30miodPqyd9Lf6Gx0L0lCwdu13H8Edrvm7FzTcenf7tfGJZLY+/OvILFKrlYyyMhRqD3GKWnnR7GdVgyLbvGF3cahN9kq6CpgJuqIORicvTqLgCM/yUL64Tuab+9hFpIHwPVxZSbJrAA4H0lc7/mKq6+KYFiOeanFC00CPUFZ3mh4BjCKfY7o+oN+VQDomrTwAL6nbdzc2CYOaRhdR+vhvncgS1TWJv8g+OOX0T6N8al9lPcwwEOUsKJfjQZaLpgO/9ikssqUiPST29Wtm2OtxLB5faNUmd4rLw0kf9RNSml2Dk9cEDDog==",
     "cookieTtl": 30,
-    "cookieName": "phone_billing_sid",
+    "cookieName": "banknote_catalog_sid",
     "routePrefix": "",
     "plugins": [
       "vision",
