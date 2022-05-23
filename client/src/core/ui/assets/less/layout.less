@@ -1,0 +1,305 @@
+//LAYOUT UZ NAŠU STRUKTURU
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1;
+  --antd-wave-shadow-color: @primary !important;
+}
+
+//------------------ WRAPPERS (main structure)
+
+div#app,
+div.root_layout,
+div.base_layout,
+div.page {
+  height: 100%;
+}
+// div.page {
+//   overflow-y: auto;
+//   overflow-x: hidden;
+// }
+
+//<------------------
+
+//------------------ LAYOUT - Sidebar + Content (common structures)
+// Mobile: sidebar on the top, >lg: Fixed sidebar on the left
+
+.main-layout {
+  display: flex;
+  flex-direction: column !important;
+  height: 100%;
+  background-color: @main-layout-content;
+  &-sider-header {
+    display: flex;
+    width: 100%;
+    height: 78px;
+    padding: 8px 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-sider {
+    display: flex;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+    flex: 0 0 78px !important;
+    min-height: 78px;
+    background-color: @sidebar-background;
+    line-height: 78px;
+    -webkit-box-shadow: 0px 0px 15px 5px @sidebar-shade-color;
+    box-shadow: 0px 0px 15px 5px @sidebar-shade-color;
+    z-index: 20;
+    .ant-layout-sider-children {
+      display: flex;
+      flex-direction: column;
+      width: 100% !important;
+      z-index: 1;
+      height: 78px;
+      -webkit-transition: height 0.5s ease-out !important;
+      -moz-transition: height 0.5s ease-out !important;
+      -o-transition: height 0.5s ease-out !important;
+      transition: height 0.5s ease-out !important;
+    }
+    &-open {
+      .ant-layout-sider-children {
+        height: 100vh;
+        align-items: center;
+        background: @sidebar-background-open;
+        -webkit-transition: height 0.5s ease-out !important;
+        -moz-transition: height 0.5s ease-out !important;
+        -o-transition: height 0.5s ease-out !important;
+        transition: height 0.5s ease-out !important;
+      }
+    }
+    &-logo {
+      width: auto;
+      height: 100%;
+      padding: 0;
+      line-height: 1;
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+    &-button {
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 25px;
+    border-top: 1px solid @main-layout-content-footer-border-color;
+    font-size: 0.9em;
+    color: @main-layout-content-footer-color;
+  }
+  &-content {
+    width: 100% !important;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .main-layout {
+    flex-direction: row !important;
+    &-sider {
+      position: relative;
+      flex: 0 0 130px !important;
+      max-width: 130px !important;
+      min-width: 130px !important;
+      width: 130px !important;
+      height: 100%;
+      padding: 0;
+      z-index: 1;
+      transition: all 0.2s;
+
+      &-open {
+        .ant-layout-sider-children {
+          background: @sidebar-background;
+        }
+      }
+      &-logo {
+        width: 100%;
+        height: auto;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      &-header {
+        height: 78px;
+        padding: 8px 12px;
+      }
+    }
+    &-content {
+      width: 0 !important;
+    }
+  }
+}
+
+
+//------------------ LAYOUT - Menu (common structures)
+
+.main-menu.ant-menu-inline-collapsed {
+  width: 100% !important;
+  margin-top: 10px;
+  border: none;
+  background: @main-menu-mobile-background;
+  li {
+    height: 50px !important;
+    margin: 0 0 2px 0 !important;
+    padding: 0 25px !important;
+    background: @main-menu-mobile-item-background;
+    background: linear-gradient(
+      180deg,
+      rgba(@main-menu-mobile-item-background-01, 1) 1%,
+      rgba(@main-menu-mobile-item-background-02, 1) 15%,
+      rgba(@main-menu-mobile-item-background-03, 0.8) 100%
+    );
+    &:hover {
+      background: @main-menu-mobile-item-background-active;
+      background: linear-gradient(
+        180deg,
+        rgba(@main-menu-mobile-item-background-active-01, 1) 15%,
+        rgba(@main-menu-mobile-item-background-active-02, 1) 50%,
+        rgba(@main-menu-mobile-item-background-active-03, 0.8) 100%
+      );
+    }
+
+    .ant-menu-title-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+      margin: 0 !important;
+      line-height: 1.5 !important;
+      .anticon {
+        line-height: 1;
+        svg {
+          width: 22px !important;
+          height: 22px !important;
+          color: @main-menu-mobile-item-icon-color;
+          -webkit-transition: color 0.4s ease-out !important;
+          -moz-transition: color 0.4s ease-out !important;
+          -o-transition: color 0.4s ease-out !important;
+          transition: colorr 0.4s ease-out !important;
+        }
+      }
+      span + span {
+        color: @main-menu-mobile-item-label-color;
+        font-size: 1em;
+        font-weight: 600;
+        white-space: break-spaces;
+        margin-left: 10px;
+        opacity: 1 !important;
+      }
+      .main-menu-badge {
+        color: @main-menu-mobile-badge-label-color !important;
+        span + span {
+          margin-left: 0px;
+        }
+        sup {
+          top: 3px;
+          right: 3px;
+          font-size: 0.65em;
+          font-weight: 500;
+          span + span {
+            font-size: 12px !important;
+          }
+        }
+      }
+    }
+    &::after {
+      border-right: none;
+      border-bottom: none !important;
+    }
+  }
+}
+@media only screen and (min-width: 992px) {
+  .main-menu.ant-menu-inline {
+    flex-direction: column;
+    background: @main-menu-item-background;
+    margin-top: 0;
+    li {
+      height: auto !important;
+      margin: 0 !important;
+      position: relative !important;
+      padding: 12px 8px !important;
+      background: @main-menu-item-background;
+      .ant-menu-title-content {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.5 !important;
+        .anticon svg {
+          width: 32px !important;
+          height: 32px !important;
+          color: @main-menu-item-icon-color;
+          -webkit-transition: color 0.4s ease-out !important;
+          -moz-transition: color 0.4s ease-out !important;
+          -o-transition: color 0.4s ease-out !important;
+          transition: colorr 0.4s ease-out !important;
+        }
+        span + span {
+          color: @main-menu-item-label-color;
+          font-size: 0.75em;
+          font-weight: normal;
+          text-align: center;
+          margin-left: 0 !important;
+          white-space: break-spaces;
+        }
+        .main-menu-badge {
+          color: @main-menu-badge-label-color !important;
+          span + span {
+            color: @main-menu-badge-label-color !important;
+          }
+          sup {
+            top: 8px;
+            right: 10px;
+            span + span {
+              font-size: 12px !important;
+            }
+          }
+        }
+      }
+      &::after {
+        border-right: none;
+        border-bottom: none !important;
+      }
+      &:hover,
+      &:focus,
+      &.ant-menu-item-selected,
+      &.ant-menu-item-active {
+        background: @main-menu-item-active-background !important;
+        border-bottom: none;
+        border-right: 2px solid @main-menu-item-active-border-color;
+        & .ant-menu-title-content {
+          flex-direction: column;
+          height: auto;
+          justify-content: center;
+          .anticon svg {
+            color: @main-menu-item-icon-active-color;
+          }
+          span + span {
+            color: @main-menu-item-label-active-color;
+          }
+        }
+        &::after {
+          border-right: 1px solid @transparent !important;
+        }
+      }
+    }
+  }
+}

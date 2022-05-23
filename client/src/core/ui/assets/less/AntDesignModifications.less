@@ -1,0 +1,161 @@
+////////////////////////////////////////////////// COMPONENTS
+//------------------- Buttons
+.ant-btn {
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  &-sm {
+    font-size: 0.75em;
+    letter-spacing: 1px;
+  }
+  &-primary {
+    background: @secondary;
+    border-color: @secondary;
+    &:active,
+    &:focus,
+    &:hover {
+      background: @secondary-dark-10 !important;
+      border-color: @secondary-dark-10!important;
+    }
+    .primary-btn-icon svg {
+      color: @white;
+      width: 14px;
+      height: 14px;
+    }
+    &.btn-secondary {
+      background: @primary;
+      border-color: @primary;
+      &:active,
+      &:focus,
+      &:hover {
+        background: @primary-dark-10 !important;
+        border-color: @primary-dark-10!important;
+      }
+    }
+  }
+  &-link {
+    color: @secondary;
+    vertical-align: middle;
+    line-height: 1;
+    height: auto;
+    &:hover,
+    &:focus,
+    &:active {
+      color: @secondary;
+    }
+  }
+  i {
+    margin-right: 4px;
+  }
+  .anticon.anticon-plus > svg,
+  .anticon.anticon-minus > svg {
+    shape-rendering: auto;
+  }
+}
+
+button.ant-switch-checked {
+  background-color: @success;
+}
+
+//------------------- <Select>
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 600;
+  background-color: @primary-light-25;
+}
+
+//------------------- <Spin>
+.ant-spin-nested-loading,
+.ant-spin-container {
+  height: 100%;
+}
+
+////////////////////////////////////////////////// FORMS
+//------------------- Form.item
+.form-item-horizontal {
+  display: flex !important;
+  flex-direction: row;
+
+  .ant-form-item-control {
+    line-height: 1 !important;
+  }
+}
+
+.ant-form {
+  &-item {
+    margin-bottom: 10px;
+    padding-bottom: 0 !important;
+
+    &-control {
+      line-height: 1.35 !important;
+
+      .ant-picker {
+        width: 100%;
+      }
+    }
+
+    &-label {
+      display: flex;
+      align-items: center;
+      line-height: 1 !important;
+      margin-right: 6px;
+      label {
+        height: 22px;
+        margin-bottom: 0;
+        font-size: 12px !important;
+        font-weight: 600;
+        &::after {
+          content: none !important;
+        }
+      }
+    }
+    &-data {
+      min-width: 100%;
+      width: 100%;
+    }
+  }
+  &-item-explain {
+    font-size: 10px !important;
+    min-height: 10px;
+  }
+  &-item-data {
+    min-width: 100%;
+    width: 100%;
+  }
+}
+.ant-input-number {
+  min-width: 45px !important;
+  width: 100% !important;
+}
+
+.ant-form-vertical {
+  .form-item-special-case div,
+  .form-item-special-case div + div {
+    width: 100%;
+  }
+  .form-item-horizontal {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    .ant-form-item-label {
+      margin-right: 6px;
+    }
+  }
+  .ant-form-item-label {
+    padding-bottom: 3px !important;
+
+    .form-item-sm-button {
+      margin-top: 6px;
+      height: 30px !important;
+    }
+  }
+  .ant-form-item {
+    margin-bottom: 6px;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .ant-form-item .ant-form-item-label {
+    padding: 0;
+  }
+}
