@@ -1,6 +1,8 @@
 import * as React from "react";
 import { IRouter } from "../../runtime/Router";
 import { TTranslate } from "../../service/locale/TranslationService";
+import Header from "../components/Header";
+import Content from "../components/Content";
 
 export interface PageProps {
   router: IRouter;
@@ -17,7 +19,8 @@ class Page extends React.Component<PageProps, PageState> {
     const { children, style, className } = this.props;
     return (
       <div className={"page " + className} style={style}>
-        {children}
+        <Header />
+        <Content children={children} />
       </div>
     );
   }
