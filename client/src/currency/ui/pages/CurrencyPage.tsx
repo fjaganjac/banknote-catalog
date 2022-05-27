@@ -1,14 +1,16 @@
 import { Typography } from "antd";
 import React from "react";
 import Page, { PageProps } from "../../../core/ui/pages/Page";
-import { IHomePresenter } from "../../presenter/HomePresenter";
+import Currency from "../../model/currency/Currency";
+import { ICurrencyPresenter } from "../../presenter/CurrencyPresenter";
+import TableCurrency from "../components/TableCurrency";
 
 const { Text } = Typography;
 
 export interface Props extends PageProps {}
-export interface State extends IHomePresenter {}
+export interface State extends ICurrencyPresenter {}
 
-export default class HomePage extends React.Component<Props, State> {
+export default class CurrencyPage extends React.Component<Props, State> {
   private subscriptionId: number = 0;
 
   constructor(props: any) {
@@ -27,11 +29,11 @@ export default class HomePage extends React.Component<Props, State> {
   }
 
   render() {
-    const { translate, users } = this.state;
-    console.log(this.state);
+    const { translate, currencies } = this.state;
+    //console.log(currencies);
     return (
       <Page {...this.props} style={{ color: "red" }}>
-        <Text>{users}</Text>
+        <TableCurrency currencies={currencies} />
       </Page>
     );
   }

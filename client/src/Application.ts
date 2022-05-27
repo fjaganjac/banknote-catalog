@@ -14,7 +14,7 @@ export default class Application {
   private _container: IModuleContainer;
   private _localeProvider: ILocaleProvider;
 
-  private _areas = ["home"];
+  private _areas = ["home", "currency"];
 
   get container() {
     return this._container;
@@ -70,8 +70,8 @@ export default class Application {
       action: Action.Push,
       location: {
         pathname: window.location.pathname,
-        search: window.location.search
-      }
+        search: window.location.search,
+      },
     }) as To;
 
     this.registerGlobalErrorHandler();

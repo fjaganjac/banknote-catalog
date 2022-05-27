@@ -7,11 +7,12 @@ import {
   Constructor,
   createContainer,
   InjectionMode,
-  Resolver
+  Resolver,
 } from "awilix";
 import Application from "../../Application";
 import CredentialsService from "../../authentication/service/CredentialsService";
 import HomeArea from "../../home/area/HomeArea";
+import CurrencyArea from "../../currency/area/CurrencyArea";
 import { UserPreferences } from "../common/Constants";
 import CreateResourceInteractor from "../interactor/app/crud/CreateResourceInteractor";
 import DeleteResourceInteractor from "../interactor/app/crud/DeleteResourceInteractor";
@@ -50,7 +51,7 @@ const ModuleContainer = (
   const _container =
     container ||
     createContainer({
-      injectionMode: InjectionMode.PROXY
+      injectionMode: InjectionMode.PROXY,
     });
 
   function withCache(moduleName: string, timeToLiveMs?: number) {
@@ -60,9 +61,9 @@ const ModuleContainer = (
         cacheManager: _container.resolve("cacheManager"),
         options: {
           name: moduleName,
-          timeToLive: timeToLiveMs !== undefined ? timeToLiveMs : 0
-        }
-      })
+          timeToLive: timeToLiveMs !== undefined ? timeToLiveMs : 0,
+        },
+      }),
     });
   }
 
@@ -79,9 +80,9 @@ const ModuleContainer = (
             container.resolve<HandleApplicationErrorInteractor>(
               "handleApplicationError"
             ),
-          application: _application
+          application: _application,
         }) as any as T;
-      }
+      },
     };
   }
 
@@ -105,9 +106,9 @@ const ModuleContainer = (
       .inject((c) => ({
         dispatcher: _container.resolve("dispatcher"),
         defaultTopic: "app",
-        initialState: {}
+        initialState: {},
       })),
-    defaultSettings: asValue(Config)
+    defaultSettings: asValue(Config),
   });
 
   //services
@@ -123,12 +124,16 @@ const ModuleContainer = (
     notificationService: asFunction(NotificationService),
     simpleCRUDServiceFactory: asFunction(SimpleCRUDServiceFactory),
     applicationService: asFunction(ApplicationService),
-    credentialsService: asFunction(CredentialsService)
+    credentialsService: asFunction(CredentialsService),
   });
 
   //areas
   _container.register({
-    homeArea: asClass(HomeArea).singleton()
+    homeArea: asClass(HomeArea).singleton(),
+  });
+
+  _container.register({
+    currencyArea: asClass(CurrencyArea).singleton(),
   });
 
   //interactors
@@ -142,7 +147,7 @@ const ModuleContainer = (
     updateResource: asInteractor(UpdateResourceInteractor),
     deleteResource: asInteractor(DeleteResourceInteractor),
     findResourceEntry: asInteractor(FindResourceEntryInteractor),
-    getResourceTextValue: asInteractor(GetResourceTextValueInteractor)
+    getResourceTextValue: asInteractor(GetResourceTextValueInteractor),
   });
 
   return {
@@ -171,7 +176,7 @@ const ModuleContainer = (
     },
     createScope() {
       return ModuleContainer(_application, _container.createScope());
-    }
+    },
   } as IModuleContainer;
 };
 
