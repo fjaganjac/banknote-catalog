@@ -26,7 +26,6 @@ const CurrencyPresenter = withStore<ICurrencyPresenter, TCurrencyPresenter>(
     loader.start("currencyLoader");
 
     const load = async (currencies: ICurrency[]) => {
-      //console.log(currencies);
       _store.update({
         currencies,
       });

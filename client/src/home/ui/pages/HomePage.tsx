@@ -28,7 +28,6 @@ export default class HomePage extends React.Component<Props, State> {
 
   render() {
     const { translate, users } = this.state;
-    console.log(this.state);
     return (
       <Page {...this.props} style={{ color: "red" }}>
         <Text>{users}</Text>

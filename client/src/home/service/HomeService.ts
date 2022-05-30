@@ -12,7 +12,6 @@ const HomeService = ({ httpService }): IHomeService => {
     async getUsers() {
       const path = _http.buildPath("/api", _baseUrl);
       const response = await _http.get(path);
-      //console.log(response);
       return _http.toText(response);
     },
   };

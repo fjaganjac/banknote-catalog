@@ -4,7 +4,7 @@ export interface TCurrency {
   id: number;
   currencyCode: number;
   currencyName: string;
-  coutryCurrency: string;
+  countryCurrency: string;
 }
 
 export interface ICurrency extends TCurrency {}
@@ -31,11 +31,11 @@ const Currency = Model((model: TCurrency): ICurrency => {
     set currencyName(currencyName) {
       _value.currencyName = currencyName;
     },
-    get coutryCurrency() {
-      return _value.coutryCurrency;
+    get countryCurrency() {
+      return _value.countryCurrency;
     },
-    set coutryCurrency(coutryCurrency) {
-      _value.coutryCurrency = coutryCurrency;
+    set countryCurrency(coutryCurrency) {
+      _value.countryCurrency = coutryCurrency;
     },
   };
 });

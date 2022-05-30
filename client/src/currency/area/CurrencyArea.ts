@@ -2,7 +2,7 @@ import React from "react";
 import Application from "../../Application";
 import Area, { IArea } from "../../core/areas/Area";
 import { IRouter } from "../../core/runtime/Router";
-import ShowCurrencyPageInteractor from "../interactor/ShowCurrencyPageInteractor";
+import ShowCurrenciesInteractor from "../interactor/ShowCurrenciesInteractor";
 import CurrencyService from "../service/CurrencyService";
 
 export default class CurrencyArea extends Area implements IArea {
@@ -26,18 +26,18 @@ export default class CurrencyArea extends Area implements IArea {
     container.registerFunction("currencyService", CurrencyService, "currency");
 
     container.registerInteractor(
-      "showCurrencyPage",
-      ShowCurrencyPageInteractor
+      "showCurrenciesPage",
+      ShowCurrenciesInteractor
     );
   }
 
   register(params: any) {
     this.registerModules();
     this.router.registerRoutes({
-      path: "/currency",
+      path: "/currencies",
       page: this.createPage({
-        Page: React.lazy(() => import("../ui/pages/CurrencyPage")),
-        action: this.showCurrencyPage.bind(this),
+        Page: React.lazy(() => import("../ui/pages/CurrenciesPage")),
+        action: this.showCurrenciesPage.bind(this),
       }),
       options: {
         secure: true,
@@ -45,9 +45,9 @@ export default class CurrencyArea extends Area implements IArea {
     });
   }
 
-  public showCurrencyPage() {
+  public showCurrenciesPage() {
     return this.application.container
-      .resolve<ShowCurrencyPageInteractor>("showCurrencyPage")
+      .resolve<ShowCurrenciesInteractor>("showCurrenciesPage")
       .execute();
   }
 }

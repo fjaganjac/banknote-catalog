@@ -3,7 +3,7 @@ import React from "react";
 import Page, { PageProps } from "../../../core/ui/pages/Page";
 import Currency from "../../model/currency/Currency";
 import { ICurrencyPresenter } from "../../presenter/CurrencyPresenter";
-import TableCurrency from "../components/TableCurrency";
+import TableCurrency from "../components/CurrenciesTable";
 
 const { Text } = Typography;
 
@@ -30,7 +30,6 @@ export default class CurrencyPage extends React.Component<Props, State> {
 
   render() {
     const { translate, currencies } = this.state;
-    //console.log(currencies);
     return (
       <Page {...this.props} style={{ color: "red" }}>
         <TableCurrency currencies={currencies} />

@@ -22,13 +22,8 @@ const columns = [
   },
 ];
 
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log("params", pagination, filters, sorter, extra);
-};
-
-const TableCurrency = ({ currencies }) => (
-  //console.log(currencies),
-  <Table columns={columns} dataSource={currencies} onChange={onChange} />
+const CurrenciesTable = ({ currencies }) => (
+  <Table columns={columns} dataSource={currencies} />
 );
 
-export default TableCurrency;
+export default CurrenciesTable;
