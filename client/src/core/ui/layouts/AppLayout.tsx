@@ -3,6 +3,7 @@ import RootLayout from "./RootLayout";
 import { Layout } from "antd";
 import { TTranslate } from "../../service/locale/TranslationService";
 import { TPresentable } from "../../presenter/withStore";
+import Header from "../components/Header";
 
 const { Content } = Layout;
 
@@ -23,7 +24,7 @@ export default class AppLayout extends React.Component<Props, State> {
     this.state = {
       ...props,
       selectedKey: undefined,
-      collapsed: false
+      collapsed: false,
     };
   }
 
@@ -42,6 +43,7 @@ export default class AppLayout extends React.Component<Props, State> {
 
     return (
       <RootLayout {...this.props}>
+        <Header />
         <Layout className={"main-layout"}>
           <Content className={"main-layout-content"}>{children}</Content>
         </Layout>
