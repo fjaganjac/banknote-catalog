@@ -7,27 +7,13 @@ const currencies = {
     currencies.id,
     currencies.code,
     currencies.description,
-    currencies.country_id,
+    currencies.countryId,
     countries.name
   FROM
     currencies
-  INNER JOIN countries ON currencies.country_id = countries.id
+  INNER JOIN countries ON currencies.countryId = countries.id
   WHERE currencies.valid = 1;`
 }
-/* const currencies = {
-  findAllCurrencies: `SELECT
-    currencies.id,
-    currencies.name,
-    countries.name AS countryName,
-    currencies.code,
-    currencies.description,
-    currencies.id AS kljuc
-  FROM
-    currencies
-  INNER JOIN countries ON currencies.country_id = countries.id
-  WHERE
-    currencies.valid = 1;`
-} */
 
 const queries = Object.assign({}, { users, currencies} );
 

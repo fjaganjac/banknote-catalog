@@ -14,7 +14,7 @@ export default class HomeController {
     h: Hapi.ResponseToolkit
   ): Promise<any> {
     try {
-      return "test ruta users";
+      return "test";
     } catch (error) {
       return error as any;
     }

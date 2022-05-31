@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS Countries  (
     name VARCHAR(100) NOT NULL,
     description VARCHAR(4000),
     valid boolean NOT NULL DEFAULT true,    
-    date_created DATETIME NOT NULL,
-    user_created VARCHAR(100) NOT NULL,
-    date_modified DATETIME,    
-    user_modified VARCHAR(100)
+    dateCreated DATETIME NOT NULL,
+    userCreated VARCHAR(100) NOT NULL,
+    dateModified DATETIME,    
+    userModified VARCHAR(100)
 )

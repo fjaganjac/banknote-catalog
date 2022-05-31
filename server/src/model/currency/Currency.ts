@@ -2,7 +2,7 @@ import Model from "../Model";
 
 export interface TCurrency {
   id: number;
-  country_id: string;
+  countryId: string;
   code: string;
   name?: string;
   description?: string;
@@ -23,8 +23,8 @@ const Currency = Model((user: TCurrency = <TCurrency>{}): ICurrency => {
     get id() {
       return _currency.id;
     },
-    get country_id() {
-      return _currency.country_id;
+    get countryId() {
+      return _currency.countryId;
     },
     get code() {
       return _currency.code;

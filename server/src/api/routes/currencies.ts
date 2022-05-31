@@ -19,20 +19,6 @@ const CurrencyArea = ({ currencyController }: any): IRouteArea => {
           handler: _controller.getCurrencies
         }
       });
-
-      // server.route({
-      //   method: ["GET", "POST"],
-      //   path: "/{any*}",
-      //   handler: (request, h) => {
-      //     let error = Error();
-      //     return h
-      //       .view("error", {
-      //         pageNotFound: true,
-      //         error
-      //       })
-      //       .code(404);
-      //   }
-      // });
     }
   };
 };

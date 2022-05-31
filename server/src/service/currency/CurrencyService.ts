@@ -27,9 +27,10 @@ const CurrencyService = Service(
                 "id",
                 "code",
                 "description",
-                "country_id",
+                "countryId",
                 "name",
               ]);
+              
               return Currency(model);
             } catch (error) {
               throw error;
