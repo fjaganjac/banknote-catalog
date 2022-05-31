@@ -6,7 +6,7 @@ import Task from "./runtime/Task";
 
 const _container = ModuleContainer();
 const _config = _container.resolve<IConfiguration>("config");
-const _routeAreas = ["home"].map(_container.resolve) as IRouteArea[];
+const _routeAreas = ["home", "currencies"].map(_container.resolve) as IRouteArea[];
 
 const _server = Server({
   task: _container.resolve<Task>("task"),

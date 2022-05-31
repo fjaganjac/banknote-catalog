@@ -1,20 +1,23 @@
 import * as Hapi from "hapi";
-import ShowUserListInteractor from "../../interactor/users/ShowUserListInteractor";
+import GetCurrencyListInteractor from "../../interactor/currencies/GetCurrencyListInteractor";
 import Task from "../../runtime/Task";
 
-export default class HomeController {
+export default class CurrencyController {
   private task: Task;
 
   constructor({ task }: any) {
     this.task = task;
   }
 
-  public async showHomePage(
+  public async getCurrencies(
     request: Hapi.Request,
     h: Hapi.ResponseToolkit
   ): Promise<any> {
     try {
-      return "test ruta users";
+       return this.task.start<GetCurrencyListInteractor>(
+        "getCurrencyList",
+        t => t.execute()
+      ); 
     } catch (error) {
       return error as any;
     }
