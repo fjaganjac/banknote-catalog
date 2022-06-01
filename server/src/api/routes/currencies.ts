@@ -20,23 +20,6 @@ const CurrencyArea = ({ currencyController }: any): IRouteArea => {
           handler: _controller.getCurrencies
         }
       });
-
-      server.route({
-        method: "POST",
-        path: "/api/currencies/{id}",
-        options: {
-          auth: {
-            mode: "try"
-          },
-          plugins: { "hapi-auth-cookie": { redirectTo: false } },
-          handler: function (request: Hapi.Request, h:Hapi.ResponseToolkit){
-            
-            
-
-
-          }
-        }
-      });
     }
   };
 };
