@@ -1,6 +1,7 @@
 import * as Hapi from "hapi";
 import IRouteArea from "../server/IRouteArea";
 import CurrencyController from "../controller/CurrencyController";
+import hapiAuthJwt2 = require("hapi-auth-jwt2");
 
 const CurrencyArea = ({ currencyController }: any): IRouteArea => {
   let _controller = currencyController as CurrencyController;
@@ -17,6 +18,23 @@ const CurrencyArea = ({ currencyController }: any): IRouteArea => {
           },
           plugins: { "hapi-auth-cookie": { redirectTo: false } },
           handler: _controller.getCurrencies
+        }
+      });
+
+      server.route({
+        method: "POST",
+        path: "/api/currencies/{id}",
+        options: {
+          auth: {
+            mode: "try"
+          },
+          plugins: { "hapi-auth-cookie": { redirectTo: false } },
+          handler: function (request: Hapi.Request, h:Hapi.ResponseToolkit){
+            
+            
+
+
+          }
         }
       });
     }

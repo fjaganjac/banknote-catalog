@@ -4,16 +4,17 @@ const users = {
 
 const currencies = {
   findAllCurrencies: `SELECT
-    currencies.id,
-    currencies.code,
-    currencies.description,
-    currencies.countryId,
-    countries.name
-  FROM
-    currencies
-  INNER JOIN countries ON currencies.countryId = countries.id
-  WHERE currencies.valid = 1;`
+  crr.id,
+  crr.code,
+  crr.description,
+  crr.countryId ,
+  ctr.name
+FROM
+  currencies AS crr
+INNER JOIN countries AS ctr ON crr.countryId = ctr.id
+WHERE crr.valid = 1;`,
 }
+
 
 const queries = Object.assign({}, { users, currencies} );
 

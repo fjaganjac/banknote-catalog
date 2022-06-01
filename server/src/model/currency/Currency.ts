@@ -4,7 +4,7 @@ export interface TCurrency {
   id: number;
   countryId: string;
   code: string;
-  name?: string;
+  name: string;
   description?: string;
 
   dateCreated: Date;
@@ -13,11 +13,7 @@ export interface TCurrency {
   userModified?: string;
 }
 
-export interface ICurrency extends TCurrency {
-  name: string;
-}
-
-const Currency = Model((user: TCurrency = <TCurrency>{}): ICurrency => {
+const Currency = Model((user: TCurrency = <TCurrency>{}): TCurrency => {
   const _currency = Object.assign(<TCurrency>{}, user);
   return {
     get id() {
@@ -30,7 +26,7 @@ const Currency = Model((user: TCurrency = <TCurrency>{}): ICurrency => {
       return _currency.code;
     },
     get name() {
-      return _currency.name ? _currency.name.toString() : "";
+      return _currency.name;
     },
     get description() {
       return _currency.description;
