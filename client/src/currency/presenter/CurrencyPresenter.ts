@@ -1,6 +1,6 @@
 import withStore, {
   TLoadingAwarePresenter,
-  TPresentable,
+  TPresentable
 } from "../../core/presenter/withStore";
 import Application from "../../Application";
 import { ICurrency } from "../model/currency/Currency";
@@ -14,7 +14,7 @@ export interface ICurrencyPresenter extends TCurrencyPresenter, TPresentable {
 }
 
 const defaultState: TCurrencyPresenter = {
-  currencies: [],
+  currencies: []
 };
 
 const CurrencyPresenter = withStore<ICurrencyPresenter, TCurrencyPresenter>(
@@ -27,7 +27,7 @@ const CurrencyPresenter = withStore<ICurrencyPresenter, TCurrencyPresenter>(
 
     const load = async (currencies: ICurrency[]) => {
       _store.update({
-        currencies,
+        currencies
       });
       loader.stop("currencyLoader");
     };
@@ -38,7 +38,7 @@ const CurrencyPresenter = withStore<ICurrencyPresenter, TCurrencyPresenter>(
       loader,
       application: _application,
       translate,
-      load,
+      load
     };
   },
   defaultState

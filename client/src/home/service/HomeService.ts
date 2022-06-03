@@ -13,7 +13,7 @@ const HomeService = ({ httpService }): IHomeService => {
       const path = _http.buildPath("/api", _baseUrl);
       const response = await _http.get(path);
       return _http.toText(response);
-    },
+    }
   };
 };
 

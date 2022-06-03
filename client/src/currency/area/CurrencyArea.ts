@@ -11,7 +11,7 @@ export default class CurrencyArea extends Area implements IArea {
 
   constructor({
     application,
-    router,
+    router
   }: {
     application: Application;
     router: IRouter;
@@ -37,11 +37,11 @@ export default class CurrencyArea extends Area implements IArea {
       path: "/currencies",
       page: this.createPage({
         Page: React.lazy(() => import("../ui/pages/CurrenciesPage")),
-        action: this.showCurrenciesPage.bind(this),
+        action: this.showCurrenciesPage.bind(this)
       }),
       options: {
-        secure: true,
-      },
+        secure: true
+      }
     });
   }
 
