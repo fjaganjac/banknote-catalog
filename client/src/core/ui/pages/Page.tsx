@@ -1,6 +1,7 @@
 import * as React from "react";
 import { IRouter } from "../../runtime/Router";
 import { TTranslate } from "../../service/locale/TranslationService";
+import Header from "../components/Header";
 
 export interface PageProps {
   router: IRouter;
