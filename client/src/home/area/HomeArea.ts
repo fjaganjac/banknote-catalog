@@ -11,7 +11,7 @@ export default class HomeArea extends Area implements IArea {
 
   constructor({
     application,
-    router,
+    router
   }: {
     application: Application;
     router: IRouter;
@@ -35,21 +35,21 @@ export default class HomeArea extends Area implements IArea {
         path: "/",
         page: this.createPage({
           Page: React.lazy(() => import("../ui/pages/HomePage")),
-          action: this.showHomePage.bind(this),
+          action: this.showHomePage.bind(this)
         }),
         options: {
-          secure: true,
-        },
+          secure: true
+        }
       },
       {
         path: "/home",
         page: this.createPage({
           Page: React.lazy(() => import("../ui/pages/HomePage")),
-          action: this.showHomePage.bind(this),
+          action: this.showHomePage.bind(this)
         }),
         options: {
-          secure: true,
-        },
+          secure: true
+        }
       }
     );
   }

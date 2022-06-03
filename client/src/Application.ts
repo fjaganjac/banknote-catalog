@@ -70,8 +70,8 @@ export default class Application {
       action: Action.Push,
       location: {
         pathname: window.location.pathname,
-        search: window.location.search,
-      },
+        search: window.location.search
+      }
     }) as To;
 
     this.registerGlobalErrorHandler();
