@@ -5,21 +5,21 @@ import { createDocumentRegistry } from "typescript";
 const columns = [
   {
     title: "Valuta",
-    dataIndex: "code",
+    dataIndex: "currencyCode",
     width: "30%",
-    id: 0,
+    id: 0
   },
   {
     title: "Naziv",
-    dataIndex: "name",
-    id: 1,
+    dataIndex: "currencyName",
+    id: 1
   },
   {
     title: "Drzava",
-    dataIndex: "country",
+    dataIndex: "countryCurrency",
     width: "40%",
-    id: 2,
-  },
+    id: 2
+  }
 ];
 
 const CurrenciesTable = ({ currencies }) => (

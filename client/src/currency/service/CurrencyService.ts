@@ -7,32 +7,29 @@ export interface ICurrencyService {
 
 const CurrencyService = ({ httpService }): ICurrencyService => {
   const _http: IHttpService = httpService;
-  const _baseUrl: string = "/users";
+  const _baseUrl: string = "/currencies";
+  function mapCurrencies(currencies: any) {
+    var arrayICuuency = Array();
+    currencies.map((crr) => {
+      const iCurrency: ICurrency = {
+        id: crr.id,
+        currencyCode: crr.code,
+        currencyName: crr.description,
+        countryCurrency: crr.name,
+        key: crr.id
+      };
+      arrayICuuency.push(iCurrency);
+    });
+    return arrayICuuency;
+  }
 
   return {
     async getCurrencies() {
-      const currencies = new Array();
-
-      const currency1 = {
-        id: 0,
-        code: 12345,
-        name: "Euro",
-        country: "Njemacka",
-        key: "0",
-      };
-      const currency2 = {
-        id: 1,
-        code: 6789,
-        name: "Dolar",
-        country: "Amerika",
-        key: "1",
-      };
-
-      currencies.push(currency1);
-      currencies.push(currency2);
-      return currencies;
-    },
+      const path = _http.buildPath("/api", _baseUrl);
+      const response = await _http.get(path);
+      const responseJSON = await _http.toJSON(response);
+      return mapCurrencies(responseJSON);
+    }
   };
 };
-
 export default CurrencyService;

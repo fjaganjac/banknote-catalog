@@ -1,6 +1,6 @@
 import Application from "../../Application";
 import CurrencyPresenter, {
-  ICurrencyPresenter,
+  ICurrencyPresenter
 } from "../presenter/CurrencyPresenter";
 import { ICurrencyService } from "../service/CurrencyService";
 
@@ -17,11 +17,9 @@ export default class ShowCurrencyPageInteractor {
   execute() {
     this.output = CurrencyPresenter({
       application: this.application,
-      initialState: { currencies: [] },
+      initialState: { currencies: [] }
     });
     this.currencyService.getCurrencies().then(this.output.load);
-
-    //console.log(this.output);
     return this.output;
   }
 }
