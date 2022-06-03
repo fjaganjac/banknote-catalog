@@ -20,7 +20,7 @@
     background-image: url(../images/bg_registration.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    overflow-y: auto;
+    overflow: hidden;
   }
   h1 {
     color: @primary;
@@ -3063,3 +3063,20 @@
 // .ant-table.ant-table-small tfoot > tr > td {
 //   padding: 5px 5px;
 // }
+
+/////////////////////////////Header
+.main-header {
+  height: 12vh;
+  background-color: #5271ff;
+  position: relative;
+  overflow: hidden;
+  &-text {
+    position: absolute;
+    color: white;
+    font-size: 2.5rem;
+    margin-left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+  }
+}
