@@ -31,7 +31,7 @@ export default class CurrencyPage extends React.Component<Props, State> {
   render() {
     const { translate, currencies } = this.state;
     return (
-      <Page {...this.props} style={{ color: "red" }}>
+      <Page {...this.props}>
         <TableCurrency currencies={currencies} />
       </Page>
     );

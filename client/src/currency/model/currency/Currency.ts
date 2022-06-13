@@ -2,9 +2,9 @@ import Model from "../Model";
 
 export interface TCurrency {
   id: number;
-  currencyCode: number;
-  currencyName: string;
-  countryCurrency: string;
+  code: number;
+  name: string;
+  country: string;
   key: number;
 }
 
@@ -20,23 +20,23 @@ const Currency = Model((model: TCurrency): ICurrency => {
     set id(id) {
       _value.id = id;
     },
-    get currencyCode() {
-      return _value.currencyCode;
+    get code() {
+      return _value.code;
     },
-    set currencyCode(codeCurrency) {
-      _value.currencyCode = codeCurrency;
+    set code(code) {
+      _value.code = code;
     },
-    get currencyName() {
-      return _value.currencyName;
+    get name() {
+      return _value.name;
     },
-    set currencyName(currencyName) {
-      _value.currencyName = currencyName;
+    set name(name) {
+      _value.name = name;
     },
-    get countryCurrency() {
-      return _value.countryCurrency;
+    get country() {
+      return _value.country;
     },
-    set countryCurrency(coutryCurrency) {
-      _value.countryCurrency = coutryCurrency;
+    set country(country) {
+      _value.country = country;
     },
     get key() {
       return _value.key;

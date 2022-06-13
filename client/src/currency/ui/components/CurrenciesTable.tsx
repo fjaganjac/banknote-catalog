@@ -1,24 +1,23 @@
 import React from "react";
 import { Table } from "antd";
-import { createDocumentRegistry } from "typescript";
 
 const columns = [
   {
     title: "Valuta",
-    dataIndex: "currencyCode",
+    dataIndex: "code",
     width: "30%",
-    id: 0
+    id: "code"
   },
   {
     title: "Naziv",
-    dataIndex: "currencyName",
-    id: 1
+    dataIndex: "name",
+    id: "name"
   },
   {
-    title: "Drzava",
-    dataIndex: "countryCurrency",
+    title: "Država",
+    dataIndex: "country",
     width: "40%",
-    id: 2
+    id: "country"
   }
 ];
 
