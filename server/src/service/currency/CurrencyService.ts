@@ -27,7 +27,7 @@ const CurrencyService = Service(
                 "id",
                 "name",
                 "code",
-                "countryName",
+                "country",
                 "key",
               ]);
               
