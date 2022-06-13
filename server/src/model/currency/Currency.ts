@@ -6,11 +6,13 @@ export interface TCurrency {
   code: string;
   name: string;
   description?: string;
+  countryName: string;
 
   dateCreated: Date;
   userCreated?: string;
   dateModified?: Date;
   userModified?: string;
+  key: number;
 }
 
 const Currency = Model((user: TCurrency = <TCurrency>{}): TCurrency => {
@@ -31,6 +33,9 @@ const Currency = Model((user: TCurrency = <TCurrency>{}): TCurrency => {
     get description() {
       return _currency.description;
     },
+    get countryName() {
+      return _currency.countryName;
+    },
     get dateCreated() {
       return _currency.dateCreated;
     },
@@ -39,7 +44,10 @@ const Currency = Model((user: TCurrency = <TCurrency>{}): TCurrency => {
     },
     get userModified() {
       return _currency.userModified;
-    }
+    },
+    get key() {
+      return _currency.key;
+    },
   };
 });
 

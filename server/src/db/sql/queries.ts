@@ -5,10 +5,10 @@ const users = {
 const currencies = {
   findAllCurrencies: `SELECT
   crr.id,
+  crr.name,
   crr.code,
-  crr.description,
-  crr.countryId ,
-  ctr.name
+  ctr.name as countryName,
+  crr.id as "key"
 FROM
   currencies AS crr
 INNER JOIN countries AS ctr ON crr.countryId = ctr.id
