@@ -7,7 +7,7 @@ const currencies = {
   crr.id,
   crr.name,
   crr.code,
-  ctr.name as countryName,
+  ctr.name as country,
   crr.id as "key"
 FROM
   currencies AS crr
