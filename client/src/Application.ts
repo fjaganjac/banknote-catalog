@@ -14,7 +14,7 @@ export default class Application {
   private _container: IModuleContainer;
   private _localeProvider: ILocaleProvider;
 
-  private _areas = ["home"];
+  private _areas = ["home", "currency"];
 
   get container() {
     return this._container;

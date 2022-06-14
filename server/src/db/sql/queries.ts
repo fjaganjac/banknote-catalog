@@ -11,10 +11,9 @@ const currencies = {
 FROM
   currencies AS crr
 INNER JOIN countries AS ctr ON crr.countryId = ctr.id
-WHERE crr.valid = 1;`,
-}
+WHERE crr.valid = 1;`
+};
 
-
-const queries = Object.assign({}, { users, currencies} );
+const queries = Object.assign({}, { users, currencies });
 
 export default queries;

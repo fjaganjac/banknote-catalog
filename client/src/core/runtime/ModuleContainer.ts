@@ -12,6 +12,7 @@ import {
 import Application from "../../Application";
 import CredentialsService from "../../authentication/service/CredentialsService";
 import HomeArea from "../../home/area/HomeArea";
+import CurrencyArea from "../../currency/area/CurrencyArea";
 import { UserPreferences } from "../common/Constants";
 import CreateResourceInteractor from "../interactor/app/crud/CreateResourceInteractor";
 import DeleteResourceInteractor from "../interactor/app/crud/DeleteResourceInteractor";
@@ -129,6 +130,10 @@ const ModuleContainer = (
   //areas
   _container.register({
     homeArea: asClass(HomeArea).singleton()
+  });
+
+  _container.register({
+    currencyArea: asClass(CurrencyArea).singleton()
   });
 
   //interactors
