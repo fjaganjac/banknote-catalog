@@ -5,7 +5,6 @@ export interface TCurrency {
   code: number;
   name: string;
   country: string;
-  key: number;
 }
 
 export interface ICurrency extends TCurrency {}
@@ -37,12 +36,6 @@ const Currency = Model((model: TCurrency): ICurrency => {
     },
     set country(country) {
       _value.country = country;
-    },
-    get key() {
-      return _value.key;
-    },
-    set key(key) {
-      _value.key = key;
     }
   };
 });

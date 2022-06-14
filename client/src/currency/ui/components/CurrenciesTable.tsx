@@ -1,5 +1,6 @@
 import React from "react";
 import { Table } from "antd";
+import Currency from "../../model/currency/Currency";
 
 const columns = [
   {
@@ -21,8 +22,11 @@ const columns = [
   }
 ];
 
-const CurrenciesTable = ({ currencies }) => (
-  <Table columns={columns} dataSource={currencies} />
-);
+const CurrenciesTable = ({ currencies }) => {
+  const dataSource = currencies.map((currency) => {
+    return { ...currency, key: currency.id };
+  });
+  return <Table columns={columns} dataSource={dataSource} />;
+};
 
 export default CurrenciesTable;

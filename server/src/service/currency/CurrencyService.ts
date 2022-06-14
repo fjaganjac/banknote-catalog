@@ -25,12 +25,12 @@ const CurrencyService = Service(
             try {
               let model = extract<TCurrency>(item, [
                 "id",
-                "name",
                 "code",
-                "country",
-                "key",
+                "description",
+                "countryId",
+                "name"
               ]);
-              
+
               return Currency(model);
             } catch (error) {
               throw error;
