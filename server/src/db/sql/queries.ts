@@ -7,8 +7,7 @@ const currencies = {
   crr.id,
   crr.name,
   crr.code,
-  ctr.name as country,
-  crr.id as "key"
+  ctr.name as country
 FROM
   currencies AS crr
 INNER JOIN countries AS ctr ON crr.countryId = ctr.id

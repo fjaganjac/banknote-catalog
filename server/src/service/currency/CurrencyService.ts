@@ -27,8 +27,7 @@ const CurrencyService = Service(
                 "id",
                 "name",
                 "code",
-                "country",
-                "key",
+                "country"
               ]);
               
               return Currency(model);
