@@ -25,10 +25,9 @@ const CurrencyService = Service(
             try {
               let model = extract<TCurrency>(item, [
                 "id",
+                "name",
                 "code",
-                "description",
-                "countryId",
-                "name"
+                "country"
               ]);
 
               return Currency(model);
