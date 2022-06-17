@@ -1,6 +1,7 @@
 import * as Hapi from "hapi";
 import GetCurrencyListInteractor from "../../interactor/currencies/GetCurrencyListInteractor";
 import EditCurrencyInteractor from "../../interactor/currencies/EditCurrencyInteractor";
+import AddCurrencyInteractor from "../../interactor/currencies/AddCurrencyInteractor";
 import Task from "../../runtime/Task";
 
 export default class CurrencyController {
@@ -43,6 +44,29 @@ export default class CurrencyController {
         "editCurrency",
         t => t. execute(Edit)
        );   
+    } catch (error) {
+      return error as any;
+    }
+  }
+
+  public async addCurrency(
+    request: Hapi.Request,
+    h: Hapi.ResponseToolkit
+  ): Promise<any> {
+    try {
+      let {code, name, description,userCreated} = request.payload as any;
+      var currentdate = new Date(); 
+      var dateCreated =  currentdate.getFullYear() + "-"
+                + (currentdate.getMonth()+1)  + "-" 
+                + currentdate.getDate() + " "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+        var Add = {code, name, description, dateCreated, userCreated}
+        return this.task.start<AddCurrencyInteractor>(
+        "addCurrency",
+        t => t.execute(Add)
+      ); 
     } catch (error) {
       return error as any;
     }

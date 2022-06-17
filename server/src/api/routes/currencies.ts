@@ -39,6 +39,18 @@ const CurrencyArea = ({ currencyController }: any): IRouteArea => {
           }
         }
       });
+
+      server.route({
+        method: "POST",
+        path: "/api/currencies",
+        options: {
+          auth: {
+            mode: "try"
+          },
+          plugins: { "hapi-auth-cookie": { redirectTo: false } },
+          handler: _controller.addCurrency,
+        }
+      });
     }
   };
 };
