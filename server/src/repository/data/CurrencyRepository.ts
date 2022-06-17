@@ -4,6 +4,7 @@ import queries from "../../db/sql/queries";
 
 export interface ICurrencyRepository {
   findAllCurrencies(): Promise<any>;
+  editCurrency(Edit: any): Promise<any>
 }
 
 const CurrencyRepository = Repository(
@@ -11,7 +12,11 @@ const CurrencyRepository = Repository(
     return {
       async findAllCurrencies() {
         return port.query(queries.currencies.findAllCurrencies);
-      }
+      },
+
+      async editCurrency(Edit) {
+        return port.query(queries.currencies.editCurrency(Edit));
+      },
     };
   }
 );

@@ -6,6 +6,7 @@ import { extractResultSetValues } from "../../repository/Repository";
 
 export interface ICurrencyService {
   findAllCurrencies(): Promise<TCurrency>;
+  editCurrency(Edit: any): Promise<any>;
 }
 
 const CurrencyService = Service(
@@ -35,6 +36,15 @@ const CurrencyService = Service(
               throw error;
             }
           });
+        } else {
+          return null;
+        }
+      },
+
+      async editCurrency(Edit) {
+        const result = await currencyRepository.editCurrency(Edit);
+        if (result) {
+          return {message: "Valuta je uspješno izmijenjena"};
         } else {
           return null;
         }

@@ -2,6 +2,8 @@ import * as Hapi from "hapi";
 import IRouteArea from "../server/IRouteArea";
 import CurrencyController from "../controller/CurrencyController";
 import hapiAuthJwt2 = require("hapi-auth-jwt2");
+import { join } from "lodash";
+import Joi = require('joi');
 
 const CurrencyArea = ({ currencyController }: any): IRouteArea => {
   let _controller = currencyController as CurrencyController;
@@ -18,6 +20,23 @@ const CurrencyArea = ({ currencyController }: any): IRouteArea => {
           },
           plugins: { "hapi-auth-cookie": { redirectTo: false } },
           handler: _controller.getCurrencies
+        }
+      });
+
+      server.route({
+        method: "PUT",
+        path: "/api/currencies/{id}",
+        options: {
+          auth: {
+            mode: "try"
+          },
+          plugins: { "hapi-auth-cookie": { redirectTo: false } },
+          handler: _controller.editCurrency,
+          validate: {
+            params: {
+              id: Joi.number().integer().required()
+            }
+          }
         }
       });
     }
