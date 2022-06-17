@@ -51,6 +51,18 @@ const CurrencyArea = ({ currencyController }: any): IRouteArea => {
           handler: _controller.addCurrency,
         }
       });
+
+      server.route({
+        method: "DELETE",
+        path: "/api/currencies/{id}",
+        options: {
+          auth: {
+            mode: "try"
+          },
+          plugins: { "hapi-auth-cookie": { redirectTo: false } },
+          handler: _controller.deleteCurrency,
+        }
+      });
     }
   };
 };

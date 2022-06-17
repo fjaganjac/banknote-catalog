@@ -22,7 +22,7 @@ SET
     code = ${obj.code},
     name = '${obj.name}',
     description = '${obj.description}',
-    userModified = 'Sys',
+    userModified = 'SYSTEM',
     dateModified = '${obj.dateModified}'
 WHERE
     id=${obj.id}`)
@@ -43,10 +43,21 @@ WHERE
       '${obj.name}',
       '${obj.description}',
       '${obj.dateCreated}',
-      'Sys'
+      'SYSTEM'
   )`);
   },
   
+  deleteCurrency(obj: any) {
+    return(`UPDATE
+    currencies
+SET
+    valid = 0,
+    userModified = 'SYSTEM',
+    dateModified = '${obj.dateModified}'
+WHERE
+    id=${obj.id}`)
+
+  }
 };
 
 

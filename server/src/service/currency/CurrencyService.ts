@@ -8,6 +8,7 @@ export interface ICurrencyService {
   findAllCurrencies(): Promise<TCurrency>;
   editCurrency(Edit: any): Promise<any>;
   addCurrency(Add: any): Promise<any>;
+  deleteCurrency(Delete: any): Promise<any>;
 }
 
 const CurrencyService = Service(
@@ -58,7 +59,16 @@ const CurrencyService = Service(
         } else {
           return null;
         }
-      }
+      },
+
+      async deleteCurrency(Delete) {
+        const result = await currencyRepository.deleteCurrency(Delete);
+        if (result) {
+          return {message: `Valuta ${Delete.id} je uspješno izbrisana`};
+        } else {
+          return null;
+        }
+      },
     };
   }
 );
