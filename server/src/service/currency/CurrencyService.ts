@@ -6,9 +6,9 @@ import { extractResultSetValues } from "../../repository/Repository";
 
 export interface ICurrencyService {
   findAllCurrencies(): Promise<TCurrency>;
-  editCurrency(Edit: any): Promise<any>;
-  addCurrency(Add: any): Promise<any>;
-  deleteCurrency(Delete: any): Promise<any>;
+  editCurrency(EditObj: any): Promise<any>;
+  addCurrency(AddObj: any): Promise<any>;
+  deleteCurrency(id: number): Promise<any>;
 }
 
 const CurrencyService = Service(
@@ -43,28 +43,28 @@ const CurrencyService = Service(
         }
       },
 
-      async editCurrency(Edit) {
-        const result = await currencyRepository.editCurrency(Edit);
+      async editCurrency(EditObj) {
+        const result = await currencyRepository.editCurrency(EditObj);
         if (result) {
-          return {message: `Valuta ${Edit.id} je uspješno izmijenjena`};
+          return {message: `Valuta id: ${EditObj.id} je uspješno izmijenjena.`};
         } else {
           return null;
         }
       },
 
-      async addCurrency(Add) {
-        const result = await currencyRepository.addCurrency(Add);
+      async addCurrency(AddObj) {
+        const result = await currencyRepository.addCurrency(AddObj);
         if (result) {
-          return {message: `Valuta ${Add.name} je uspješno dodana`};
+          return {message: `Valuta ${AddObj.name} je uspješno dodana.`};
         } else {
           return null;
         }
       },
 
-      async deleteCurrency(Delete) {
-        const result = await currencyRepository.deleteCurrency(Delete);
+      async deleteCurrency(id) {
+        const result = await currencyRepository.deleteCurrency(id);
         if (result) {
-          return {message: `Valuta ${Delete.id} je uspješno izbrisana`};
+          return {message: `Valuta id: ${id} je uspješno izbrisana.`};
         } else {
           return null;
         }

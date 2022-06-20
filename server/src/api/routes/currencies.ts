@@ -2,7 +2,6 @@ import * as Hapi from "hapi";
 import IRouteArea from "../server/IRouteArea";
 import CurrencyController from "../controller/CurrencyController";
 import hapiAuthJwt2 = require("hapi-auth-jwt2");
-import { join } from "lodash";
 import Joi = require('joi');
 
 const CurrencyArea = ({ currencyController }: any): IRouteArea => {

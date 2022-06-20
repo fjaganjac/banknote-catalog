@@ -33,17 +33,9 @@ export default class CurrencyController {
     try {
       let id=parseInt(request.params.id,10);
       let {code, name, description, userModified} = request.payload as any;
-      var currentdate = new Date(); 
-      var dateModified =  currentdate.getFullYear() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getDate() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-      let Edit = {id, name, code, description, userModified, dateModified};
         return this.task.start<EditCurrencyInteractor>(
         "editCurrency",
-        t => t. execute(Edit)
+        t => t. execute({id, name, code, description, userModified})
        );   
     } catch (error) {
       return error as any;
@@ -55,18 +47,10 @@ export default class CurrencyController {
     h: Hapi.ResponseToolkit
   ): Promise<any> {
     try {
-      let {code, name, description,userCreated} = request.payload as any;
-      var currentdate = new Date(); 
-      var dateCreated =  currentdate.getFullYear() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getDate() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-        var Add = {code, name, description, dateCreated, userCreated}
+        let {code, name, description, userCreated} = request.payload as any;
         return this.task.start<AddCurrencyInteractor>(
         "addCurrency",
-        t => t.execute(Add)
+        t => t.execute({code, name, description, userCreated})
       ); 
     } catch (error) {
       return error as any;
@@ -78,18 +62,10 @@ export default class CurrencyController {
     h: Hapi.ResponseToolkit
   ): Promise<any> {
     try {
-      let id=parseInt(request.params.id,10);
-      var currentdate = new Date(); 
-      var dateModified =  currentdate.getFullYear() + "-"
-                + (currentdate.getMonth()+1)  + "-" 
-                + currentdate.getDate() + " "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-      let Delete = {id, dateModified};
+      let id = parseInt(request.params.id,10);
         return this.task.start<DeleteCurrencyInteractor>(
         "deleteCurrency",
-        t => t. execute(Delete)
+        t => t. execute(id)
        );   
     } catch (error) {
       return error as any;

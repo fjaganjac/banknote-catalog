@@ -1,7 +1,13 @@
-import AddCurrencyInteractor from "../../interactor/currencies/AddCurrencyInteractor";
-
 const users = {
-  findAllUsers: `SELECT id, first_name as firstName, last_name as lastName, email FROM users WHERE valid = 1;`
+  findAllUsers: `SELECT
+  id,
+  first_name AS firstName,
+  last_name AS lastName,
+  email
+FROM
+  users
+WHERE
+  valid = 1;`
 };
 
 const currencies = {
@@ -23,14 +29,13 @@ SET
     name = '${obj.name}',
     description = '${obj.description}',
     userModified = 'SYSTEM',
-    dateModified = '${obj.dateModified}'
+    dateModified = NOW()
 WHERE
     id=${obj.id}`)
   },
 
   addCurrency(obj: any) {
     return (`INSERT INTO currencies(
-      id,
       code,
       name,
       description,
@@ -38,24 +43,23 @@ WHERE
       userCreated
   )
   VALUES(
-      '',
       ${obj.code},
       '${obj.name}',
       '${obj.description}',
-      '${obj.dateCreated}',
+      NOW(),
       'SYSTEM'
   )`);
   },
   
-  deleteCurrency(obj: any) {
+  deleteCurrency(id: number) {
     return(`UPDATE
     currencies
 SET
     valid = 0,
     userModified = 'SYSTEM',
-    dateModified = '${obj.dateModified}'
+    dateModified = NOW()
 WHERE
-    id=${obj.id}`)
+    id=${id}`)
 
   }
 };

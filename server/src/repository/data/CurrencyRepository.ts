@@ -4,9 +4,9 @@ import queries from "../../db/sql/queries";
 
 export interface ICurrencyRepository {
   findAllCurrencies(): Promise<any>,
-  editCurrency(Edit: any): Promise<any>,
-  addCurrency(Add: any): Promise<any>,
-  deleteCurrency(Delete: any): Promise<any>;  
+  editCurrency(EditObj: any): Promise<any>,
+  addCurrency(AddObj: any): Promise<any>,
+  deleteCurrency(id: number): Promise<any>;  
 }
 
 const CurrencyRepository = Repository(
@@ -16,16 +16,16 @@ const CurrencyRepository = Repository(
         return port.query(queries.currencies.findAllCurrencies);
       },
 
-      async editCurrency(Edit) {
-        return port.query(queries.currencies.editCurrency(Edit));
+      async editCurrency(EditObj) {
+        return port.query(queries.currencies.editCurrency(EditObj));
       },
 
-      async addCurrency(Add) {
-        return port.query(queries.currencies.addCurrency(Add));
+      async addCurrency(AddObj) {
+        return port.query(queries.currencies.addCurrency(AddObj));
       },
 
-      async deleteCurrency(Delete) {
-        return port.query(queries.currencies.deleteCurrency(Delete));
+      async deleteCurrency(id) {
+        return port.query(queries.currencies.deleteCurrency(id));
       }
     };
   }
