@@ -32,10 +32,10 @@ export default class CurrencyController {
   ): Promise<any> {
     try {
       let id=parseInt(request.params.id,10);
-      let {code, name, description, userModified} = request.payload as any;
+      let {code, name, description, countryName, userModified} = request.payload as any;
         return this.task.start<EditCurrencyInteractor>(
         "editCurrency",
-        t => t. execute({id, name, code, description, userModified})
+        t => t. execute({id, name, code, description, countryName, userModified})
        );   
     } catch (error) {
       return error as any;
@@ -47,10 +47,10 @@ export default class CurrencyController {
     h: Hapi.ResponseToolkit
   ): Promise<any> {
     try {
-        let {code, name, description, userCreated} = request.payload as any;
+        let {code, name, description, countryName, userCreated} = request.payload as any;
         return this.task.start<AddCurrencyInteractor>(
         "addCurrency",
-        t => t.execute({code, name, description, userCreated})
+        t => t.execute({code, name, description, countryName, userCreated})
       ); 
     } catch (error) {
       return error as any;

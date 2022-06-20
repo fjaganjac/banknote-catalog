@@ -23,15 +23,18 @@ WHERE crr.valid = 1;`,
 
   editCurrency(obj: any) {
     return (`UPDATE
-    currencies
+    countries AS ctr,
+    currencies AS crr
 SET
-    code = ${obj.code},
-    name = '${obj.name}',
-    description = '${obj.description}',
-    userModified = 'SYSTEM',
-    dateModified = NOW()
+    crr.countryId = ctr.id,
+    crr.name = '${obj.name}',
+    crr.code = ${obj.code},
+    crr.description = '${obj.description}',
+    crr.countryID = ctr.id,
+    crr.dateModified = NOW(),
+    crr.userModified = 'SYSTEM'
 WHERE
-    id=${obj.id}`)
+	crr.id=${obj.id} AND ctr.name='${obj.countryName}';`)
   },
 
   addCurrency(obj: any) {
@@ -39,16 +42,21 @@ WHERE
       code,
       name,
       description,
+      userCreated,
       dateCreated,
-      userCreated
+      countryId
   )
-  VALUES(
+  SELECT
       ${obj.code},
       '${obj.name}',
       '${obj.description}',
+      'SYSTEM',
       NOW(),
-      'SYSTEM'
-  )`);
+      ctr.id
+  FROM
+      countries as ctr
+  WHERE
+      ctr.name = '${obj.countryName}';`);
   },
   
   deleteCurrency(id: number) {
