@@ -25,7 +25,7 @@ WHERE crr.valid = 1;`,
     return (`UPDATE
     countries AS ctr,
     currencies AS crr
-SET
+  SET
     crr.countryId = ctr.id,
     crr.name = '${obj.name}',
     crr.code = ${obj.code},
@@ -33,7 +33,7 @@ SET
     crr.countryID = ctr.id,
     crr.dateModified = NOW(),
     crr.userModified = 'SYSTEM'
-WHERE
+  WHERE
 	crr.id=${obj.id} AND ctr.name='${obj.countryName}';`)
   },
 
@@ -62,13 +62,20 @@ WHERE
   deleteCurrency(id: number) {
     return(`UPDATE
     currencies
-SET
+  SET
     valid = 0,
     userModified = 'SYSTEM',
     dateModified = NOW()
-WHERE
-    id=${id}`)
+  WHERE
+    id=${id};`);
+  },
 
+  getOldName(id: number) {
+    return (`SELECT
+    name
+  FROM
+    currencies
+  WHERE id=${id};`);
   }
 };
 

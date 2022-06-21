@@ -6,7 +6,8 @@ export interface ICurrencyRepository {
   findAllCurrencies(): Promise<any>,
   editCurrency(EditObj: any): Promise<any>,
   addCurrency(AddObj: any): Promise<any>,
-  deleteCurrency(id: number): Promise<any>;  
+  deleteCurrency(id: number): Promise<any>;
+  getOldName(id:number): Promise<any>;  
 }
 
 const CurrencyRepository = Repository(
@@ -26,6 +27,10 @@ const CurrencyRepository = Repository(
 
       async deleteCurrency(id) {
         return port.query(queries.currencies.deleteCurrency(id));
+      },
+
+      async getOldName(id) {
+        return port.query(queries.currencies.getOldName(id))
       }
     };
   }

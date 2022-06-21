@@ -44,9 +44,25 @@ const CurrencyService = Service(
       },
 
       async editCurrency(EditObj) {
-        const result = await currencyRepository.editCurrency(EditObj);
-        if (result) {
-          return {message: `Valuta id: ${EditObj.id} je uspješno izmijenjena.`};
+        const getOldName = await currencyRepository.getOldName(EditObj.id);
+        if (getOldName) {
+          let oldName = getOldName.map((item: any) => {
+            try {
+              let model = extract<TCurrency>(item, [
+                "name",
+              ]);
+              return Currency(model);
+            } catch (error) {
+              throw error;
+            }
+          })[0].name;
+          const result = await currencyRepository.editCurrency(EditObj);
+          if(result) {
+            return {message: `Valuta ${oldName} je uspješno izmijenjena.`};
+          }
+          else {
+            return null;
+          }
         } else {
           return null;
         }
@@ -62,9 +78,25 @@ const CurrencyService = Service(
       },
 
       async deleteCurrency(id) {
-        const result = await currencyRepository.deleteCurrency(id);
-        if (result) {
-          return {message: `Valuta id: ${id} je uspješno izbrisana.`};
+        const getOldName = await currencyRepository.getOldName(id);
+        if (getOldName) {
+          let oldName = getOldName.map((item: any) => {
+            try {
+              let model = extract<TCurrency>(item, [
+                "name",
+              ]);
+              return Currency(model);
+            } catch (error) {
+              throw error;
+            }
+          })[0].name;
+          const result = await currencyRepository.deleteCurrency(id);
+          if(result) {
+            return {message: `Valuta ${oldName} je uspješno izbrisana.`};
+          }
+          else {
+            return null;
+          }
         } else {
           return null;
         }
