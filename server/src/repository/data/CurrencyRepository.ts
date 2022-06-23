@@ -1,13 +1,15 @@
 import Repository from "../Repository";
 import { IDataPort } from "../ports";
 import queries from "../../db/sql/queries";
+import { TCurrency } from "../../model/currency/Currency";
 
 export interface ICurrencyRepository {
   findAllCurrencies(): Promise<any>,
-  editCurrency(EditObj: any): Promise<any>,
-  addCurrency(AddObj: any): Promise<any>,
+  editCurrency(EditObj: TCurrency): Promise<any>,
+  addCurrency(AddObj: TCurrency): Promise<any>,
   deleteCurrency(id: number): Promise<any>;
-  getOldName(id:number): Promise<any>;  
+  getCurrency(id:number): Promise<any>;
+
 }
 
 const CurrencyRepository = Repository(
@@ -17,20 +19,20 @@ const CurrencyRepository = Repository(
         return port.query(queries.currencies.findAllCurrencies);
       },
 
-      async editCurrency(EditObj) {
+      async editCurrency(EditObj: TCurrency) {
         return port.query(queries.currencies.editCurrency(EditObj));
       },
 
-      async addCurrency(AddObj) {
+      async addCurrency(AddObj: TCurrency) {
         return port.query(queries.currencies.addCurrency(AddObj));
       },
 
-      async deleteCurrency(id) {
+      async deleteCurrency(id: number) {
         return port.query(queries.currencies.deleteCurrency(id));
       },
 
-      async getOldName(id) {
-        return port.query(queries.currencies.getOldName(id))
+      async getCurrency(id: number) {
+        return port.query(queries.currencies.getCurrency(id));
       }
     };
   }

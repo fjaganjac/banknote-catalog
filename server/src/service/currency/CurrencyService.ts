@@ -6,9 +6,9 @@ import { extractResultSetValues } from "../../repository/Repository";
 
 export interface ICurrencyService {
   findAllCurrencies(): Promise<TCurrency>;
-  editCurrency(EditObj: any): Promise<any>;
-  addCurrency(AddObj: any): Promise<any>;
-  deleteCurrency(id: number): Promise<any>;
+  editCurrency(EditObj: TCurrency): Object;
+  addCurrency(AddObj: TCurrency): Object;
+  deleteCurrency(id: number): Object;
 }
 
 const CurrencyService = Service(
@@ -43,13 +43,18 @@ const CurrencyService = Service(
         }
       },
 
-      async editCurrency(EditObj) {
-        const getOldName = await currencyRepository.getOldName(EditObj.id);
+      async editCurrency(EditObj: TCurrency) {
+        const getOldName = await currencyRepository.getCurrency(EditObj.id);
         if (getOldName) {
           let oldName = getOldName.map((item: any) => {
             try {
               let model = extract<TCurrency>(item, [
                 "name",
+                "code",
+                "description",
+                "dateCreated",
+                "userCreated",
+                "country"
               ]);
               return Currency(model);
             } catch (error) {
@@ -68,7 +73,7 @@ const CurrencyService = Service(
         }
       },
 
-      async addCurrency(AddObj) {
+      async addCurrency(AddObj: TCurrency) {
         const result = await currencyRepository.addCurrency(AddObj);
         if (result) {
           return {message: `Valuta ${AddObj.name} je uspješno dodana.`};
@@ -77,8 +82,8 @@ const CurrencyService = Service(
         }
       },
 
-      async deleteCurrency(id) {
-        const getOldName = await currencyRepository.getOldName(id);
+      async deleteCurrency(id: number) {
+        const getOldName = await currencyRepository.getCurrency(id);
         if (getOldName) {
           let oldName = getOldName.map((item: any) => {
             try {

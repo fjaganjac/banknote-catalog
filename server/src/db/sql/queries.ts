@@ -70,12 +70,19 @@ WHERE crr.valid = 1;`,
     id=${id};`);
   },
 
-  getOldName(id: number) {
+  getCurrency(id: number) {
     return (`SELECT
-    name
-  FROM
-    currencies
-  WHERE id=${id};`);
+      crr.id,
+      crr.name,
+      crr.code,
+      crr.description,
+      crr.dateCreated,
+      crr.userCreated,
+      ctr.name as country
+    FROM
+      currencies AS crr
+    INNER JOIN countries AS ctr ON crr.countryId = ctr.id
+    WHERE crr.valid = 1 and crr.id = ${id};`);
   }
 };
 
