@@ -84,9 +84,69 @@ WHERE crr.valid = 1;`,
     INNER JOIN countries AS ctr ON crr.countryId = ctr.id
     WHERE crr.valid = 1 and crr.id = ${id};`);
   }
+}
+
+const banknotes = { ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  findAllBanknotes: `SELECT
+  id,
+  filename,
+  name,
+  description,
+  active
+FROM
+  banknotes
+WHERE
+  valid = 1;`,
+
+  editBanknote(obj: any) {
+    return (`UPDATE
+    banknotes as bnt,
+    denominations as den
+SET
+	  bnt.denominationId = den.id,
+    bnt.description = '${obj.description}',
+    bnt.filename = '${obj.filename}',
+    bnt.name = '${obj.name}',
+    bnt.dateModified = NOW(),
+    bnt.userModified = 'SYSTEM'
+WHERE
+    bnt.id=${obj.banknoteId} AND den.id = ${obj.denominationId}`)
+  },
+
+  addBanknote(obj: any) {
+    return (`INSERT INTO banknotes(
+      denominationId,
+      filename,
+      name,
+      description,
+      dateCreated,
+      userCreated
+  )
+  SELECT
+      den.id,
+      '${obj.filename}',
+      '${obj.name}',
+      '${obj.description}',
+      NOW(),
+      'SYSTEM'
+  FROM
+      denominations as den
+  WHERE
+      den.id = ${obj.denominationId};`);
+  },
+  
+  deleteBanknote(id: number) {
+    return(`UPDATE
+    banknotes
+  SET
+    valid = 0,
+    userModified = 'SYSTEM',
+    dateModified = NOW()
+  WHERE
+    id=${id};`);
+  },
 };
 
-
-const queries = Object.assign({}, { users, currencies });
+const queries = Object.assign({}, { users, currencies, banknotes });
 
 export default queries;
