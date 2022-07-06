@@ -4,10 +4,10 @@ import queries from "../../db/sql/queries";
 import { TBanknote } from "../../model/banknote/Banknote";
 
 export interface IBanknoteRepository {
-  findAllBanknotes(): Promise<any>,
-  editBanknote(editObj: TBanknote): Promise<any>,
-  addBanknote(AddObj: TBanknote): Promise<any>,
-  deleteBanknote(id: number): Promise<any>
+  findAllBanknotes(): Promise<TBanknote[] | null>,
+  editBanknote(editObj: TBanknote): Promise<string>,
+  addBanknote(AddObj: TBanknote): Promise<string>,
+  deleteBanknote(id: number): Promise<string>
 
 }
 
@@ -15,7 +15,7 @@ const BanknoteRepository = Repository(
   ({ port }: { port: IDataPort }): IBanknoteRepository => {
     return {
       async findAllBanknotes() {
-        return port.query(queries.banknotes.findAllBanknotes);
+        return port.query(queries.banknotes.findAllBanknotes) ;
       },
       async editBanknote(editObj: Object) {
         return port.query(queries.banknotes.editBanknote(editObj));

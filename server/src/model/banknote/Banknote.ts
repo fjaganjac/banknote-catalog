@@ -8,7 +8,7 @@ export interface TBanknote {
   description?: string;
 
   dateCreated: Date;
-  userCreated?: string;
+  userCreated: string;
   dateModified?: Date;
   userModified?: string;
 }
@@ -33,6 +33,9 @@ const Banknote = Model((user: TBanknote = <TBanknote>{}): TBanknote => {
     },
     get dateCreated() {
       return _banknote.dateCreated;
+    },
+    get userCreated() {
+      return _banknote.userCreated;
     },
     get dateModified() {
       return _banknote.dateModified;

@@ -32,11 +32,11 @@ export default class BanknoteController {
       ): Promise<any> {
         try {
 
-           let banknoteId = parseInt(request.params.id,10);
-           let {description, denominationId, filename, name,} = request.payload as any;
+           //const banknoteId = {banknoteId:parseInt(request.params.id,10)};
+           const banknote = request.payload as any;
            return this.task.start<EditBanknoteInteractor>(
             "editBanknote",
-            t => t.execute({banknoteId, denominationId, filename, name, description})
+            t => t.execute(Object.defineProperty(banknote, 'banknoteId', {value: parseInt(request.params.id,10)}))
           ); 
         } catch (error) {
           return error as any;
@@ -48,10 +48,10 @@ export default class BanknoteController {
         ): Promise<any> {
         try {
 
-            let {denominationId, filename, name, description} = request.payload as any;
+            const banknote = request.payload as any;
             return this.task.start<AddBanknoteInteractor>(
             "addBanknote",
-            t => t.execute({ denominationId, filename, name, description})
+            t => t.execute(banknote)
             ); 
         } catch (error) {
             return error as any;
@@ -62,10 +62,9 @@ export default class BanknoteController {
         h: Hapi.ResponseToolkit
         ): Promise<any> {
         try {
-            let id = parseInt(request.params.id,10);
             return this.task.start<DeleteBanknoteInteractor>(
             "deleteBanknote",
-            t => t.execute(id)
+            t => t.execute(parseInt(request.params.id,10))
             ); 
         } catch (error) {
             return error as any;

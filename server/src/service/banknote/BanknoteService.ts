@@ -5,7 +5,7 @@ import { IConfiguration } from "config";
 import { extractResultSetValues } from "../../repository/Repository";
 
 export interface IBanknoteService {
-  findAllBanknotes(): Promise <TBanknote>;
+  findAllBanknotes(): Promise <TBanknote[] | null>;
   editBanknote(editObj: TBanknote): Object;
   addBanknote(addObj: TBanknote): Object;
   deleteBanknote(id: number): Object;
@@ -23,6 +23,9 @@ const BanknoteService = Service(
     return {
       async findAllBanknotes() {
         const result = await banknoteRepository.findAllBanknotes();
+        if(result == null) {
+          return null;
+        }
         if (result) {
           return result.map((item: any) => {
             try {
