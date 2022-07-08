@@ -1,3 +1,4 @@
+import { TBanknote } from "../../model/banknote/Banknote";
 import { IBanknoteService } from "../../service/banknote/BanknoteService";
 
 export default class AddBanknoteInteractor {
@@ -7,7 +8,7 @@ export default class AddBanknoteInteractor {
     this.banknoteService = banknoteService;
   }
 
-  async execute(Add: any) {
-    return this.banknoteService.addBanknote(Add);
+  async execute(banknote: TBanknote) {
+    return this.banknoteService.addBanknote(banknote);
   }
 }

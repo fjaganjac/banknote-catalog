@@ -7,7 +7,7 @@ export default class DeleteBanknoteInteractor {
     this.banknoteService = banknoteService;
   }
 
-  async execute(Delete: any) {
-    return this.banknoteService.deleteBanknote(Delete);
+  async execute(id: number) {
+    return this.banknoteService.deleteBanknote(id);
   }
 }

@@ -23,10 +23,9 @@ const BanknoteService = Service(
     return {
       async findAllBanknotes() {
         const result = await banknoteRepository.findAllBanknotes();
-        if(result == null) {
+        if(!result) {
           return null;
         }
-        if (result) {
           return result.map((item: any) => {
             try {
               let model = extract <TBanknote> (item, [
@@ -42,18 +41,14 @@ const BanknoteService = Service(
               throw error;
             }
           });
-        } else {
-          return null;
-        }
       },
       async editBanknote(editObj: TBanknote) {
         const result = await banknoteRepository.editBanknote(editObj);
         if(result) {
             return {message: "novčanica je promjenjena"};
         }
-        else {
-            return null;
-        }
+        return null;
+        
       },
       
       async addBanknote(addObj: TBanknote) {
@@ -61,9 +56,7 @@ const BanknoteService = Service(
         if(result) {
             return {message: "novčanica je dodana"};
         }
-        else {
-            return null;
-        }
+        return null;
       },
 
       
@@ -72,9 +65,7 @@ const BanknoteService = Service(
         if(result) {
             return {message: "novčanica je obrisana"};
         }
-        else {
-            return null;
-        }
+        return null;
       }
     }
   }

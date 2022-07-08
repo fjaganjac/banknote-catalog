@@ -31,8 +31,6 @@ export default class BanknoteController {
         h: Hapi.ResponseToolkit
       ): Promise<any> {
         try {
-
-           //const banknoteId = {banknoteId:parseInt(request.params.id,10)};
            const banknote = request.payload as any;
            return this.task.start<EditBanknoteInteractor>(
             "editBanknote",
